@@ -4,7 +4,7 @@ import core.hello.discount.DiscountPolicy;
 import core.hello.member.Member;
 import core.hello.member.MemberRepository;
 
-public class OrderServiceImpl implements OrderSerivce {
+public class OrderServiceImpl implements OrderService {
 
 
     public OrderServiceImpl(MemberRepository memberRepository, DiscountPolicy discountPolicy) {
