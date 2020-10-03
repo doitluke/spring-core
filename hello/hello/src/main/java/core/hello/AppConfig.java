@@ -2,6 +2,7 @@ package core.hello;
 
 import core.hello.discount.DiscountPolicy;
 import core.hello.discount.RateDiscountPolicy;
+import core.hello.member.MemberRepository;
 import core.hello.member.MemberService;
 import core.hello.member.MemberServiceImpl;
 import core.hello.member.MemoryMemberRepository;
@@ -15,17 +16,20 @@ public class AppConfig {
 
     @Bean
     public MemberService memberService(){
-        return new MemberServiceImpl(getMemberRepository());
+        System.out.println("AppConfig.memberService");
+        return new MemberServiceImpl(memberRepository());
     }
 
     @Bean
-    public MemoryMemberRepository getMemberRepository() {
+    public MemberRepository memberRepository() {
+        System.out.println("AppConfig.memberRepository");
         return new MemoryMemberRepository();
     }
 
     @Bean
     public OrderService orderService(){
-        return new OrderServiceImpl(getMemberRepository(),discountPolicy());
+        System.out.println("AppConfig.orderService");
+        return new OrderServiceImpl(memberRepository(),discountPolicy());
     }
 
     @Bean
